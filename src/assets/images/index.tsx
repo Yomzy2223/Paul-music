@@ -1,5 +1,4 @@
 import HeroBackground from "./hero_background_image.png";
-import HeroBackground2 from "./hero_background_image_2.png";
 import ArtistHeroImg from "./artist_hero_img.png";
 import RecordingInstruments from "./recording_instruments.png";
 import PodcastMic from "./podcast.png";
@@ -17,7 +16,6 @@ import StoreImg2 from "./store_img2.png";
 
 export {
   HeroBackground,
-  HeroBackground2,
   ArtistHeroImg,
   RecordingInstruments,
   PodcastMic,

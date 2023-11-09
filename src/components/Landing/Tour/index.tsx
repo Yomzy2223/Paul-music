@@ -6,7 +6,7 @@ import React from "react";
 
 const Tour = () => {
   return (
-    <div className="bg-hero2 flex flex-col items-center gap-10 py-24 px-5">
+    <div className="bg-hero flex flex-col items-center gap-10 py-24 px-5">
       <h3 className="font-semibold text-4xl">
         Tour
         <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">

@@ -63,7 +63,6 @@ module.exports = {
       },
       backgroundImage: {
         hero: "url(../assets/images/hero_background_image.png)",
-        hero2: "url(../assets/images/hero_background_image_2.png)",
       },
       keyframes: {
         "accordion-down": {

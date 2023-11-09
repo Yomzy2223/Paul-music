@@ -12,7 +12,7 @@ import React from "react";
 
 const Collection = () => {
   return (
-    <div className="bg-hero2 bg-no-repeat bg-cover relative">
+    <div className="bg-hero bg-no-repeat bg-cover relative">
       <Image
         src={MusicDisk}
         alt="music disk"

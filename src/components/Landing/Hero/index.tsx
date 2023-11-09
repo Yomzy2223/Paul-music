@@ -18,7 +18,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="bg-hero2 bg-no-repeat bg-cover ">
+    <div className="bg-hero bg-no-repeat bg-cover ">
       <Image
         src={MusicDisk2}
         alt="music disk"

@@ -14,13 +14,13 @@ export default function Home() {
     <div>
       <Header />
       <Hero />
-      <div className="bg-hero2 bg-no-repeat bg-cover ">
+      <div className="bg-hero bg-no-repeat bg-cover ">
         <Podcast />
         <Discography />
       </div>
       <Collection />
       <Tour />
-      <div className="bg-hero2 bg-no-repeat bg-cover ">
+      <div className="bg-hero bg-no-repeat bg-cover ">
         <Subscribe />
         <Store />
       </div>
