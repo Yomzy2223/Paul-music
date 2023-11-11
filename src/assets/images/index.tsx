@@ -13,6 +13,7 @@ import MusicDisk2 from "./music_disk2.png";
 import ArtistTour from "./artist_tour.png";
 import StoreImg1 from "./store_img1.png";
 import StoreImg2 from "./store_img2.png";
+import Merch from "./merch.png";
 
 export {
   HeroBackground,
@@ -30,4 +31,5 @@ export {
   ArtistTour,
   StoreImg1,
   StoreImg2,
+  Merch,
 };

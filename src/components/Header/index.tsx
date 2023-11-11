@@ -78,4 +78,8 @@ const headerList = [
     text: "Merch",
     link: "/merch",
   },
+  {
+    text: "Tours",
+    link: "/tours",
+  },
 ];

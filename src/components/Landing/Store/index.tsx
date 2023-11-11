@@ -1,6 +1,7 @@
 import { StoreImg1, StoreImg2 } from "@/assets/images";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Store = () => {
@@ -11,7 +12,9 @@ const Store = () => {
         <Image src={StoreImg2} alt="store" />
         <Image src={StoreImg1} alt="store" />
       </div>
-      <Button size="lg">Visit Store</Button>
+      <Link href="/merch" className={buttonVariants({ size: "lg" })}>
+        Visit Store
+      </Link>
     </div>
   );
 };
