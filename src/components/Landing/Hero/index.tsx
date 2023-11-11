@@ -27,16 +27,12 @@ const Hero = () => {
       />
       <div className="flex flex-col justify-between item-end max-w-[640px] m-auto px-5 py-20 lg:py-32 lg:px-36 lg:max-w-max md:flex-row">
         <div className="flex-[1.1] flex flex-col gap-[20px]">
-          <p className="text-xs font-normal py-[10px] px-[20px] bg-card/10 rounded-[30px] w-max mb-1 sm:text-sm">
-            WHERE MUSIC REIGNS SUPREME
-          </p>
-          <p className="text-[56px] font-bold sm:text-[64px] lg:-mr-52">
+          <h5 className="card1 mb-1">WHERE MUSIC REIGNS SUPREME</h5>
+          <h1 className="lg:-mr-52">
             Welcome to the Realm of{" "}
-            <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">
-              King Paul Askew
-            </span>
-          </p>
-          <p className="text-base text-accent-foreground font-normal mr-20">
+            <span className="gradient-text">King Paul Askew</span>
+          </h1>
+          <p className="lg: mr-20">
             The Kingdom of King Paul Here is where you enter royalty. King Paul
             is the king of love, happiness, healing, confidence, and success.
             This website will inspire and require you to not only be your best,

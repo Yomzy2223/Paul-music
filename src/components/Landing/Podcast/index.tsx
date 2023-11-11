@@ -1,5 +1,6 @@
 import { PodcastMic, SongCover } from "@/assets/images";
 import { ArrowRight, PlayIcon } from "@/assets/svg";
+import MusicCard from "@/components/cards/MusicCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
@@ -30,23 +31,7 @@ const Podcast = () => {
         </div>
         <div className="flex flex-col flex-[1.1] sm:grid sm:grid-cols-2 gap-[20px] h-max max-w-max">
           {[1, 2, 3, 4].map((el) => (
-            <div
-              key={el}
-              className="bg-card/10 p-[10px] rounded-[10px] h-max lg:min-w-[220px] "
-            >
-              <Image src={SongCover} alt="song cover" />
-              <div className="flex items-center justify-between gap-6 w-full mt-4">
-                <div>
-                  <p className="text-xl font-semibold lg:text-2xl">
-                    Song Title
-                  </p>
-                  <p className="text-accent-foreground text-sm mt-2">
-                    Artist name
-                  </p>
-                </div>
-                <Image src={PlayIcon} alt="play song" />
-              </div>
-            </div>
+            <MusicCard key={el} />
           ))}
         </div>
       </div>
