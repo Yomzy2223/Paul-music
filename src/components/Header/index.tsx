@@ -2,12 +2,17 @@
 
 import GradientWrapper from "@/app/container/GradientWrapper";
 import { Logo, MenuIcon } from "@/assets/svg";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { Button, buttonVariants } from "../ui/button";
 
 const Header = () => {
+  const pathname = usePathname();
+  console.log(pathname);
+
   return (
     <header className="flex justify-between items-center gap-6 px-4 py-5 sm:px-10 sm:py-6 lg:px-24 lg:py-8 z-10">
       <Image
@@ -19,18 +24,25 @@ const Header = () => {
       />
 
       <ul className="hidden justify-between items-center gap-4 w-2/3 min-w-max sm:flex">
-        {headerList.map((el) => (
-          <Link
-            href={el.link}
-            className={buttonVariants({
-              variant: "ghost",
-              size: "slim",
-            })}
-            key={el.text}
-          >
-            {el.text}
-          </Link>
-        ))}
+        {headerList.map((el) => {
+          const isActive = el.link === pathname;
+          return (
+            <Link
+              key={el.text}
+              href={el.link}
+              className={cn(
+                buttonVariants({
+                  variant: "ghost",
+                  size: "slim",
+                }),
+                isActive &&
+                  "bg-gradient-to-r from-primary to-secondary text-transparent"
+              )}
+            >
+              {el.text}
+            </Link>
+          );
+        })}
         <GradientWrapper isButton>
           <Button variant="outline" className="rounded-[20px] active:scale-100">
             Subscribe

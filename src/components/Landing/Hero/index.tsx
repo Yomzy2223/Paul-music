@@ -32,7 +32,7 @@ const Hero = () => {
             Welcome to the Realm of{" "}
             <span className="gradient-text">King Paul Askew</span>
           </h1>
-          <p className="lg: mr-20">
+          <p className="lg:mr-20">
             The Kingdom of King Paul Here is where you enter royalty. King Paul
             is the king of love, happiness, healing, confidence, and success.
             This website will inspire and require you to not only be your best,
