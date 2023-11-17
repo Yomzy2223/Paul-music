@@ -8,7 +8,7 @@ const TourCard = () => {
       <ArtistImg1 className="w-full" showSides />
       <div className="space-y-[10px] flex-1">
         <h5 className="card1 text-background">July 20, 2024</h5>
-        <h3 className="text-background ">Tour Name</h3>
+        <h2 className="text-background ">Tour Name</h2>
         <p className="text-background !mb-10">
           Enter the world of King Paul Askew, where music takes on a whole new
           dimension. With a unique blend of talent and passion, King Paul

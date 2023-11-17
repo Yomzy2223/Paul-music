@@ -31,7 +31,7 @@ const Podcast = () => {
         </div>
         <div className="flex flex-col flex-[1.1] sm:grid sm:grid-cols-2 gap-[20px] h-max max-w-max">
           {[1, 2, 3, 4].map((el) => (
-            <MusicCard key={el} />
+            <MusicCard key={el} variant={2} />
           ))}
         </div>
       </div>

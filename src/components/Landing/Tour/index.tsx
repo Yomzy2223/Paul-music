@@ -7,12 +7,12 @@ import React from "react";
 const Tour = () => {
   return (
     <div className="bg-hero flex flex-col items-center gap-10 py-24 px-5">
-      <h3 className="font-semibold text-4xl">
+      <h2 className="font-semibold text-4xl">
         Tour
         <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">
           2023/24
         </span>
-      </h3>
+      </h2>
 
       <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2">
         {[1, 2, 3, 4].map((el) => (

@@ -1,4 +1,4 @@
-import GradientWrapper from "@/app/container/GradientWrapper";
+import GradientWrapper from "@/container/GradientWrapper";
 import { SongCover } from "@/assets/images";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";

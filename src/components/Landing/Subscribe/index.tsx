@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import GradientWrapper from "@/app/container/GradientWrapper";
+import GradientWrapper from "@/container/GradientWrapper";
 
 const Subscribe = () => {
   // 1. Define your form.
@@ -36,12 +36,12 @@ const Subscribe = () => {
 
   return (
     <div className="bg-card/10 flex flex-col justify-center items-center w-full py-28 px-5">
-      <h3 className="font-semibold text-5xl text-center">
+      <h2 className="font-semibold text-5xl text-center">
         Subscribe to our{" "}
         <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">
           News feed
         </span>
-      </h3>
+      </h2>
       <p className="text-xl text-accent-foreground mt-4 mb-12 text-center">
         Follow subscribe to know the latest on King Paul
       </p>

@@ -1,4 +1,4 @@
-import GradientWrapper from "@/app/container/GradientWrapper";
+import GradientWrapper from "@/container/GradientWrapper";
 import {
   ArtistHeroImg,
   MusicDisk2,

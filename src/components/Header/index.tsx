@@ -1,6 +1,6 @@
 "use client";
 
-import GradientWrapper from "@/app/container/GradientWrapper";
+import GradientWrapper from "@/container/GradientWrapper";
 import { Logo, MenuIcon } from "@/assets/svg";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -11,7 +11,6 @@ import { Button, buttonVariants } from "../ui/button";
 
 const Header = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <header className="flex justify-between items-center gap-6 px-4 py-5 sm:px-10 sm:py-6 lg:px-24 lg:py-8 z-10">

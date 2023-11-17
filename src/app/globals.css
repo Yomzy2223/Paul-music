@@ -83,8 +83,11 @@
   h1 {
     @apply text-[56px] font-bold sm:text-[64px];
   }
+  h2 {
+    @apply text-3xl font-bold sm:text-4xl;
+  }
   h3 {
-    @apply text-4xl font-bold sm:text-3xl;
+    @apply font-semibold text-2xl sm:text-xl;
   }
   h4 {
     @apply text-sm font-semibold w-max sm:text-base;
@@ -92,12 +95,19 @@
   h5 {
     @apply text-xs font-normal w-max sm:text-sm;
   }
+  label {
+    @apply text-sm font-semibold text-background;
+  }
 }
 
 @layer utilities {
   .gradient-text {
     @apply text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text;
   }
+  .gradient-text-2 {
+    @apply text-transparent bg-gradient-to-r from-primary to-secondary to-20% bg-clip-text;
+  }
+
   .card1 {
     @apply py-[10px] px-[20px] bg-card/10 rounded-[30px];
   }
