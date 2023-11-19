@@ -22,8 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(poppins.className, "")}>{children}</body>
-      <Toaster />
+      <body className={cn(poppins.className, "")}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

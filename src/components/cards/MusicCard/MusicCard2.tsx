@@ -21,19 +21,26 @@ const MusicCard2 = ({
         className
       )}
     >
-      <Image src={SongCover} alt="song cover" width={300} height={250} />
+      <Image
+        src={SongCover}
+        alt="song cover"
+        width={300}
+        height={250}
+        className="min-w-full object-contain"
+      />
       <div className="flex items-center justify-between gap-6 w-full mt-4">
         <div>
-          <p className="text-xl font-semibold lg:text-2xl">
+          <p className="text-xl font-semibold lg:text-2xl text-foreground">
             {info?.title || "--"}
           </p>
           <p className="text-accent-foreground text-sm mt-2">
-            {info?.artiste || "--"}
+            {info?.artiste || info?.hostNames || "--"}
           </p>
         </div>
         <Link
-          href=""
+          href={info?.link || ""}
           className={buttonVariants({ variant: "ghost", size: "slim" })}
+          target={info?.link ? "_blank" : ""}
         >
           <Image src={PlayIcon} alt="play song" />
         </Link>

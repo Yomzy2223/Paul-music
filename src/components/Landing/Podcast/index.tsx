@@ -21,9 +21,9 @@ const Podcast = () => {
             <h4 className="text-xs text-accent-foreground font-light mb-[10px] lg:text-base">
               Podcast
             </h4>
-            <p className="text-5xl font-bold mb-12 lg:text-6xl">
+            <h2 className="text-5xl font-bold mb-12 lg:text-6xl">
               Unfiltered with King Paul
-            </p>
+            </h2>
             <Button size="lg">
               Export Podcast <Image src={ArrowRight} alt="arrow right" />
             </Button>

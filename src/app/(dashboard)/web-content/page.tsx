@@ -9,7 +9,7 @@ import {
 } from "@/assets/svg";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -21,8 +21,20 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/utils/firebase";
+import { toast } from "@/components/ui/use-toast";
 
 const Page = () => {
+  const [allTours, setAllTours] = useState<any>([]);
+  const [allSongs, setAllSongs] = useState<any>([]);
+  const [allPodcasts, setAllPodcasts] = useState<any>([]);
+
+  const allActivities = [...allTours, ...allSongs, ...allPodcasts]?.sort(
+    (a, b) => new Date(a?.date).getTime() - new Date(b?.date).getTime()
+  );
+  const recentActivities = allActivities?.slice(0, 5);
+
   const router = useRouter();
 
   const getIcon = (name: string) => {
@@ -31,12 +43,68 @@ const Page = () => {
     else if (name.toLowerCase() === "tours") return TourIcon;
   };
 
+  const pullActivities = async () => {
+    try {
+      // Set Songs
+      const songsSnapShot = await getDocs(collection(db, "songs"));
+      const songs: any[] = [];
+      songsSnapShot.forEach((doc) => {
+        songs.push(doc.data());
+      });
+      setAllSongs(songs);
+
+      // Set Podcasts
+      const podcastsSnapShot = await getDocs(collection(db, "podcasts"));
+      const podcasts: any[] = [];
+      podcastsSnapShot.forEach((doc) => {
+        podcasts.push(doc.data());
+      });
+      setAllPodcasts(podcasts);
+
+      // Set Tours
+      const toursSnapShot = await getDocs(collection(db, "tours"));
+      const tours: any[] = [];
+      toursSnapShot.forEach((doc) => {
+        tours.push(doc.data());
+      });
+      setAllTours(tours);
+    } catch (e) {
+      toast({
+        description: "Error pulling activities",
+      });
+      console.log(e);
+    }
+  };
+
+  const summary = [
+    {
+      name: "Discography",
+      total: allSongs?.length || 0,
+      link: "/web-content/songs",
+    },
+    {
+      name: "Podcasts",
+      total: allPodcasts?.length || 0,
+      link: "/web-content/podcasts",
+    },
+    {
+      name: "Tours",
+      total: allTours?.length || 0,
+      link: "/web-content/tours",
+    },
+  ];
+
+  useEffect(() => {
+    pullActivities();
+  }, []);
+
+  console.log(allActivities);
   return (
     <div className="flex flex-col gap-14 ">
       <div className="space-y-4">
         <h3>Overview</h3>
         <div className="flex flex-row gap-[10px] flex-wrap w-full sm:gap-5">
-          {db.map((el) => (
+          {summary.map((el) => (
             <div
               key={el.name}
               className="w-full bg-card/20 flex flex-col rounded-lg p-[10px] sm:w-[200px]"
@@ -103,9 +171,9 @@ const Page = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {activitiesBody.map((row, i) => (
+            {activitiesBody?.map((row, i) => (
               <TableRow key={i} className="border-b-0 hover:bg-none">
-                {row.map((el) => (
+                {row.map((el: any) => (
                   <TableCell key={el}>{el}</TableCell>
                 ))}
               </TableRow>
@@ -118,24 +186,6 @@ const Page = () => {
 };
 
 export default Page;
-
-const db = [
-  {
-    name: "Discography",
-    total: 233,
-    link: "/web-content/songs",
-  },
-  {
-    name: "Podcasts",
-    total: 245,
-    link: "/web-content/podcasts",
-  },
-  {
-    name: "Tours",
-    total: 432,
-    link: "/web-content/tours",
-  },
-];
 
 const actions = [
   {
@@ -152,7 +202,12 @@ const actions = [
   },
 ];
 
-const activitiesHeader = ["Date", "Activities", "Description", "Actor"];
+const activitiesHeader = [
+  "Date",
+  "Activities",
+  "Description",
+  "Artist/Tour Name",
+];
 const activitiesBody = [
   ["Feb 27, 2023", "Removed Song", "Name of subject", "Admin"],
   ["Feb 27, 2023", "Removed Song", "Name of subject", "Admin"],

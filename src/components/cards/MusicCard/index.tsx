@@ -36,11 +36,12 @@ const MusicCard = ({
       <div className="flex justify-between w-full">
         <div className="flex flex-col justify-between gap-1">
           <h4>{info?.title || "--"}</h4>
-          <p className="text-xs">{info?.artiste || "--"}</p>
+          <p className="text-xs">{info?.artiste || info?.hostNames || "--"}</p>
         </div>
         <Link
-          href=""
+          href={info?.link || ""}
           className={buttonVariants({ variant: "ghost", size: "slim" })}
+          target={info?.link ? "_blank" : ""}
         >
           <Image
             src={PlayIcon}
