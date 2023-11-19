@@ -1,8 +1,41 @@
+"use client";
+
+import { TourType } from "@/app/types/all";
 import TourCard from "@/components/cards/TourCard";
+import DoChecks from "@/components/doChecks";
+import { toast } from "@/components/ui/use-toast";
 import Section1Container from "@/container/Section1Container";
-import React from "react";
+import { db } from "@/utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
+  const [allTours, setAllTours] = useState<any>([]);
+
+  const pullTours = async () => {
+    try {
+      const toursSnapShot = await getDocs(collection(db, "tours"));
+      const tours: any[] = [];
+      toursSnapShot.forEach((doc) => {
+        tours.push(doc.data());
+      });
+      setAllTours(
+        tours.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        )
+      );
+    } catch (e) {
+      toast({
+        description: "Error pulling tours",
+      });
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    pullTours();
+  }, []);
+
   return (
     <Section1Container>
       <div>
@@ -16,13 +49,16 @@ const Page = () => {
           <h2>
             <span className="gradient-text">Upcoming</span> Tours
           </h2>
-          <div className="flex flex-col gap-12 py-2">
-            {Array(12)
-              .fill("")
-              .map((el, i) => (
-                <TourCard key={i} />
+          <DoChecks
+            isEmpty={allTours?.length === 0}
+            emptyText="Ooops! There are no tours available at this time."
+          >
+            <div className="flex flex-col gap-12 py-2">
+              {allTours?.map((el: TourType, i: number) => (
+                <TourCard key={i} info={el} />
               ))}
-          </div>
+            </div>
+          </DoChecks>
         </div>
       </div>
     </Section1Container>

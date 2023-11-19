@@ -10,7 +10,7 @@ const TourCard = ({
   className,
 }: {
   info: TourType;
-  className: string;
+  className?: string;
 }) => {
   return (
     <div
@@ -25,7 +25,7 @@ const TourCard = ({
         <h2 className="text-background ">{info?.name || "--"}</h2>
         <p className="text-background !mb-10">{info?.description || "--"}</p>
         <Link
-          href={info?.link}
+          href={info?.link || ""}
           className={buttonVariants({ variant: "default", size: "lg" })}
           target={info?.link ? "_blank" : ""}
         >

@@ -12,9 +12,10 @@ import {
   SoundCloud,
   LinePattern,
 } from "@/assets/svg";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -39,9 +40,12 @@ const Hero = () => {
             but will give the tools to help you along the way. Enter the Castle
             and get ready to become a king or queen with my guidance.
           </p>
-          <Button size="lg">
+          <Link
+            href="/discography"
+            className={buttonVariants({ variant: "default", size: "lg" })}
+          >
             Listen Now <Image src={ArrowRight} alt="arrow right" />
-          </Button>
+          </Link>
           <div>
             <p className="mb-[10px]">AVAILABLE ON:</p>
             <div className="flex gap-2 bg-card/20 px-[20px] py-[10px] w-max rounded-lg">

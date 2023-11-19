@@ -1,11 +1,44 @@
+"use client";
+
+import { SongType } from "@/app/types/all";
 import { PodcastMic, SongCover } from "@/assets/images";
 import { ArrowRight, PlayIcon } from "@/assets/svg";
 import MusicCard from "@/components/cards/MusicCard";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { toast } from "@/components/ui/use-toast";
+import { db } from "@/utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 const Podcast = () => {
+  const [allPodcasts, setAllPodcasts] = useState<any>([]);
+
+  const pullSongs = async () => {
+    try {
+      const podcastsSnapShot = await getDocs(collection(db, "podcasts"));
+      const podcasts: any[] = [];
+      podcastsSnapShot.forEach((doc) => {
+        podcasts.push(doc.data());
+      });
+      setAllPodcasts(
+        podcasts.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        )
+      );
+    } catch (e) {
+      toast({
+        description: "Error pulling podcasts",
+      });
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    pullSongs();
+  }, []);
+
   return (
     <div className="flex justify-center bg-card/5 ">
       <div className="flex flex-col items-center max-w-max gap-12 p-5 lg:flex-row lg:items-end lg:px-20 lg:py-16">
@@ -24,14 +57,17 @@ const Podcast = () => {
             <h2 className="text-5xl font-bold mb-12 lg:text-6xl">
               Unfiltered with King Paul
             </h2>
-            <Button size="lg">
+            <Link
+              href="/podcast"
+              className={buttonVariants({ variant: "default", size: "lg" })}
+            >
               Export Podcast <Image src={ArrowRight} alt="arrow right" />
-            </Button>
+            </Link>
           </>
         </div>
         <div className="flex flex-col flex-[1.1] sm:grid sm:grid-cols-2 gap-[20px] h-max max-w-max">
-          {[1, 2, 3, 4].map((el) => (
-            <MusicCard key={el} variant={2} />
+          {allPodcasts?.slice(0, 4).map((el: SongType, i: number) => (
+            <MusicCard key={i} variant={2} info={el} />
           ))}
         </div>
       </div>

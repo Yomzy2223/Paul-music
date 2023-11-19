@@ -6,8 +6,9 @@ import {
   PaulImg5,
   PaulImg6,
 } from "@/assets/images";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Collection = () => {
@@ -30,7 +31,12 @@ const Collection = () => {
               Enter the world of King Paul Askew, where music takes on a whole
               new dimension. With a unique blend of talent and passion.
             </p>
-            <Button size="lg">Visit Store</Button>
+            <Link
+              href="/merch"
+              className={buttonVariants({ variant: "default", size: "lg" })}
+            >
+              Visit Store
+            </Link>
           </div>
 
           <div className="flex-1 flex flex-col gap-4 min-[450px]:grid min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 w-max">
