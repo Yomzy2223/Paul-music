@@ -17,7 +17,6 @@ const DashboardHeader = () => {
   const logout = () => {
     signOut(auth)
       .then(() => {
-        // router.push("/login");
         console.log("Signed out successfully");
       })
       .catch((error) => console.log("Sign out failed " + error));
@@ -35,7 +34,7 @@ const DashboardHeader = () => {
 
       <ul className="hidden justify-between items-center gap-6 min-w-max sm:flex">
         {headerList.map((el) => {
-          const isActive = el.link === pathname;
+          const isActive = pathname.includes(el.link);
           return (
             <Link
               key={el.text}

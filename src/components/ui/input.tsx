@@ -30,7 +30,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const [hidePassword, setHidePassword] = React.useState(true);
 
     const isPassword = type == "password";
-    type = isPassword ? (hidePassword ? "password" : "text") : "text";
+    type = isPassword ? (hidePassword ? "password" : "text") : type;
 
     return (
       <div className="relative">

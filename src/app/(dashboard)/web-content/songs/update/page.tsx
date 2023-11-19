@@ -75,15 +75,27 @@ const Page = () => {
       >
         <div className="flex justify-between items-center gap-6">
           <h3>Songs</h3>
-          <GradientWrapper isButton className="rounded-lg">
-            <Button
-              variant="outline"
-              className="rounded-lg active:scale-100"
-              disabled={loading}
-            >
-              Publish now <PlusIcon />
-            </Button>
-          </GradientWrapper>
+          <div className="flex items-center gap-6">
+            <GradientWrapper isButton className="rounded-lg">
+              <Button
+                variant="outline"
+                className="rounded-lg active:scale-100"
+                disabled={loading}
+              >
+                Publish now <PlusIcon />
+              </Button>
+            </GradientWrapper>
+            <GradientWrapper isButton className="rounded-lg">
+              <Button
+                variant="outline"
+                className="rounded-lg active:scale-100"
+                type="button"
+                disabled={loading}
+              >
+                Delete
+              </Button>
+            </GradientWrapper>
+          </div>
         </div>
 
         <div className="flex flex-col-reverse gap-7 md:flex-row">
@@ -121,10 +133,17 @@ const Page = () => {
               value={genre}
               onSelect={onGenreSelect}
             />
+            {/* <InputWithLabel
+              form={form}
+              name="genre"
+              label="Genre Type"
+              placeholder="Rap"
+              className="capitalize"
+            /> */}
             <InputWithLabel
               form={form}
-              name="artiste"
-              label="Artiste Name(s)"
+              name="artiste(s)"
+              label="Artiste Name"
               placeholder="Paul Kellerman"
               className="capitalize"
             />

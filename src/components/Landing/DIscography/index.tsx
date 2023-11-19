@@ -1,8 +1,9 @@
 import { ArtistHeroImg } from "@/assets/images";
 import { LinePattern } from "@/assets/svg";
 import ArtistImg1 from "@/components/Images/ArtistImg1";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Discography = () => {
@@ -17,7 +18,12 @@ const Discography = () => {
           dimension. With a unique blend of talent and passion, King Paul
           transcends genres and leaves an indelible mark on every note he plays.
         </p>
-        <Button size="lg">Explore Now</Button>
+        <Link
+          href="/discography"
+          className={buttonVariants({ variant: "default", size: "lg" })}
+        >
+          Explore Now
+        </Link>
       </div>
     </div>
   );

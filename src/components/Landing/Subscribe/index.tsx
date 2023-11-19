@@ -60,7 +60,7 @@ const Subscribe = () => {
                   <Input
                     placeholder="Enter email address"
                     {...field}
-                    className="pr-20"
+                    className="pr-20 !min-w-[300px]"
                   />
                 </FormControl>
                 <FormMessage />
@@ -69,8 +69,7 @@ const Subscribe = () => {
           />
           <Button
             type="submit"
-            size="lg"
-            className="relative -left-20 rounded-3xl border border-neutral-400"
+            className="relative -left-20 rounded-3xl border px-6 border-neutral-400"
           >
             Subscribe
           </Button>

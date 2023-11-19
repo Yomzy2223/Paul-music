@@ -1,10 +1,19 @@
+import { SongType } from "@/app/types/all";
 import { SongCover } from "@/assets/images";
 import { PlayIcon } from "@/assets/svg";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const MusicCard2 = ({ className }: { className?: string }) => {
+const MusicCard2 = ({
+  className,
+  info,
+}: {
+  className?: string;
+  info: SongType;
+}) => {
   return (
     <div
       className={cn(
@@ -12,13 +21,29 @@ const MusicCard2 = ({ className }: { className?: string }) => {
         className
       )}
     >
-      <Image src={SongCover} alt="song cover" width={300} height={250} />
+      <Image
+        src={SongCover}
+        alt="song cover"
+        width={300}
+        height={250}
+        className="min-w-full object-contain"
+      />
       <div className="flex items-center justify-between gap-6 w-full mt-4">
         <div>
-          <p className="text-xl font-semibold lg:text-2xl">Song Title</p>
-          <p className="text-accent-foreground text-sm mt-2">Artist name</p>
+          <p className="text-xl font-semibold lg:text-2xl text-foreground">
+            {info?.title || "--"}
+          </p>
+          <p className="text-accent-foreground text-sm mt-2">
+            {info?.artiste || info?.hostNames || "--"}
+          </p>
         </div>
-        <Image src={PlayIcon} alt="play song" />
+        <Link
+          href={info?.link || ""}
+          className={buttonVariants({ variant: "ghost", size: "slim" })}
+          target={info?.link ? "_blank" : ""}
+        >
+          <Image src={PlayIcon} alt="play song" />
+        </Link>
       </div>
     </div>
   );
