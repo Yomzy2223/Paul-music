@@ -1,10 +1,29 @@
-import { MusicDisk2 } from "@/assets/images";
+"use client";
+
+import { SongType } from "@/app/types/all";
 import MusicCard from "@/components/cards/MusicCard";
-import Image from "next/image";
-import React from "react";
-import Section1Container from "../../../container/Section1Container";
+import Section1Container from "@/container/Section1Container";
+import { db } from "@/utils/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
+  const [allSongs, setAllSongs] = useState<any>([]);
+
+  const pullSongs = async () => {
+    const songsSnapShot = await getDocs(collection(db, "songs"));
+    const songs: any[] = [];
+    songsSnapShot.forEach((doc) => {
+      songs.push(doc.data());
+    });
+    setAllSongs(songs);
+    console.log(songs);
+  };
+
+  useEffect(() => {
+    pullSongs();
+  }, []);
+
   return (
     <Section1Container>
       <div>
@@ -29,11 +48,9 @@ const Page = () => {
       <div className="flex flex-col gap-5 mt-20 sm:mt-14">
         <h2>Other Releases</h2>
         <div className="flex flex-col gap-5 py-2 sm:grid sm:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
-          {Array(20)
-            .fill("")
-            .map((el, i) => (
-              <MusicCard key={i} />
-            ))}
+          {allSongs?.map((el: SongType, i: number) => (
+            <MusicCard key={i} info={el} />
+          ))}
         </div>
       </div>
 
