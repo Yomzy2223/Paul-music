@@ -34,8 +34,9 @@ const Header = () => {
         />
 
         <ul className="hidden justify-between items-center gap-4 w-2/3 min-w-max sm:flex">
-          {headerList.map((el) => {
-            const isActive = pathname.includes(el.link);
+          {headerList.map((el, i) => {
+            const isActive =
+              i === 0 ? pathname === el.link : pathname.includes(el.link);
             return (
               <Link
                 key={el.text}
@@ -72,6 +73,7 @@ const Header = () => {
           <Image src={MenuIcon} alt="menu" />
         </Button>
       </header>
+
       <Drawer
         open={openSidebar}
         onClose={() => setOpenSidebar(false)}
