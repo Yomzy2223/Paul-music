@@ -29,7 +29,7 @@ const Hero = () => {
       <div className="flex flex-col justify-between item-end max-w-[640px] m-auto px-5 py-20 lg:py-32 lg:px-36 lg:max-w-max md:flex-row">
         <div className="flex-[1.1] flex flex-col gap-[20px]">
           <h5 className="card1 mb-1">WHERE MUSIC REIGNS SUPREME</h5>
-          <h1 className="lg:-mr-52">
+          <h1 className="lg:-mr-52 2xl:mr-0">
             Welcome to the Realm of{" "}
             <span className="gradient-text">King Paul Askew</span>
           </h1>
@@ -57,8 +57,8 @@ const Hero = () => {
           </div>
         </div>
         <div className="hidden flex-[0.9] items-end lg:flex">
-          <div className="p-3 bg-gradient-to-r from-gr-color-1 via-gr-color-3 to-gr-color-2 rounded-[140px] shadow-[-2px_2px_35px_6px_rgba(91,137,255,0.50)]">
-            <div className="bg-gradient-to-b from-primary to-secondary rounded-[140px] pt-12 relative">
+          <div className="p-3 bg-gradient-to-r from-gr-color-1 via-gr-color-3 to-gr-color-2 rounded-[140px] shadow-[-2px_2px_35px_6px_rgba(91,137,255,0.50)] sm:rounded-[160px]">
+            <div className="bg-gradient-to-b from-primary to-secondary rounded-[140px] pt-12 relative w-full">
               <Image
                 src={ArtistHeroImg}
                 alt="king Paul"
@@ -71,13 +71,13 @@ const Hero = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center ">
+          <div className="hidden flex-col items-center justify-center xl:flex">
             <div className="flex justify-between gap-2">
               <Image src={SoundCloud} alt="sound cloud" className="max-h-max" />
               <Image src={Sportify} alt="sportify" />
             </div>
             <GradientWrapper className="bg-gradient-to-r from-gr-color-1 via-gr-color-3 to-gr-color-2 rounded-[140px] p-2 mx-8">
-              <div className="bg-gradient-to-b from-primary to-secondary rounded-[140px] pt-12 border-4 border-background w-full ">
+              <div className="bg-gradient-to-b from-primary to-secondary rounded-[140px] pt-12 border-4 border-background w-36 ">
                 <Image src={RecordingInstruments} alt="recording instruments" />
               </div>
             </GradientWrapper>
