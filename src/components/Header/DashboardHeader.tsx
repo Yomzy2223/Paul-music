@@ -23,7 +23,10 @@ const DashboardHeader = () => {
   };
 
   return (
-    <header className="sticky top-0 bg-background flex justify-between items-center gap-6 px-4 py-5 lg:px-10 lg:py-8 z-10">
+    <header
+      className="sticky top-0 bg-background flex justify-between items-center gap-6 px-4 py-5 lg:px-10 lg:py-8 z-10"
+      data-aos="fade"
+    >
       <Image
         src={Logo}
         alt="main logo"

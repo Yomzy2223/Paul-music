@@ -40,22 +40,25 @@ const Tour = () => {
 
   return (
     <div className="bg-hero flex flex-col items-center gap-10 py-24 px-5">
-      <h2 className="font-semibold text-4xl">
+      <h2
+        className="flex items-end gap-2 font-semibold text-4xl"
+        data-aos="fade-up"
+      >
         Tour
         <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">
           2023/24
         </span>
       </h2>
-
-      <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2">
-        <DoChecks
-          isEmpty={allTours?.length === 0}
-          emptyText="Ooops! There are no tours available yet."
-        >
+      <DoChecks
+        isEmpty={allTours?.length === 0}
+        emptyText="Ooops! There are no tours available yet."
+      >
+        <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2">
           {allTours?.slice(0, 4).map((el: TourType, i: number) => (
             <div
               key={i}
               className="flex flex-col gap-10 bg-card/10 p-3 pb-5 rounded-lg"
+              data-aos="fade-up"
             >
               <Image
                 src={ArtistTour}
@@ -83,8 +86,8 @@ const Tour = () => {
               </div>
             </div>
           ))}
-        </DoChecks>
-      </div>
+        </div>
+      </DoChecks>
     </div>
   );
 };

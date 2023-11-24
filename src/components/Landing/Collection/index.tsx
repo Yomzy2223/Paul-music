@@ -23,17 +23,26 @@ const Collection = () => {
       <div className="bg-card/5 ">
         <div className="flex flex-col gap-12 max-w-[640px] lg:flex-row m-auto p-5 lg:px-20 lg:py-16 lg:max-w-max">
           <div className="flex flex-col flex-1">
-            <p className="text-xs font-normal py-[10px] px-[20px] bg-card/10 rounded-[30px] w-max mb-2 sm:text-sm">
+            <p
+              className="text-xs font-normal py-[10px] px-[20px] bg-card/10 rounded-[30px] w-max mb-2 sm:text-sm"
+              data-aos="zoom-in"
+            >
               MERCH
             </p>
-            <h2 className="font-semibold text-6xl">The King Paul Collection</h2>
-            <p className="text-base text-accent-foreground mt-3 mb-12">
+            <h2 className="font-semibold text-6xl" data-aos="fade-left">
+              The King Paul Collection
+            </h2>
+            <p
+              className="text-base text-accent-foreground mt-3 mb-12"
+              data-aos="fade-right"
+            >
               Enter the world of King Paul Askew, where music takes on a whole
               new dimension. With a unique blend of talent and passion.
             </p>
             <Link
               href="/merch"
               className={buttonVariants({ variant: "default", size: "lg" })}
+              data-aos="flip-left"
             >
               Visit Store
             </Link>
@@ -44,31 +53,49 @@ const Collection = () => {
               src={PaulImg1}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
             <Image
               src={PaulImg2}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
             <Image
               src={PaulImg3}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
             <Image
               src={PaulImg1}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
             <Image
               src={PaulImg5}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
             <Image
               src={PaulImg6}
               alt="paul"
               className="object-contain rounded-lg"
+              data-aos="fade-up"
+              width={200}
+              height={300}
             />
           </div>
         </div>

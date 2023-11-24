@@ -36,20 +36,24 @@ const Subscribe = () => {
 
   return (
     <div className="bg-card/10 flex flex-col justify-center items-center w-full py-28 px-5">
-      <h2 className="font-semibold text-5xl text-center">
+      <h2 className="font-semibold text-5xl text-center" data-aos="fade-down">
         Subscribe to our{" "}
         <span className="text-transparent bg-gradient-to-b from-gr-color-2 from-30% to-gr-color-1 bg-clip-text">
           News feed
         </span>
       </h2>
-      <p className="text-xl text-accent-foreground mt-4 mb-12 text-center">
+      <p
+        className="text-xl text-accent-foreground mt-4 mb-12 text-center"
+        data-aos="fade-down"
+      >
         Follow subscribe to know the latest on King Paul
       </p>
 
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex justify-center m-auto relative -right-10"
+          className="flex justify-center relative"
+          data-aos="fade-up"
         >
           <FormField
             control={form.control}
@@ -69,7 +73,9 @@ const Subscribe = () => {
           />
           <Button
             type="submit"
-            className="relative -left-20 rounded-3xl border px-6 border-neutral-400"
+            size="lg"
+            className="absolute right-0 top-0 rounded-3xl border px-6 border-neutral-400"
+            data-aos="flip-left"
           >
             Subscribe
           </Button>

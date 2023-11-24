@@ -39,21 +39,27 @@ const Page = () => {
   return (
     <Section1Container>
       <div>
-        <h5 className="card1 ">PODCAST</h5>
-        <h1 className="mb-5 mt-2">Unfiltered with King Paul</h1>
-        <p>
+        <h5 className="card1" data-aos="zoom-in">
+          PODCAST
+        </h5>
+        <h1 className="mb-5 mt-2" data-aos="fade-right">
+          Unfiltered with King Paul
+        </h1>
+        <p data-aos="fade-left">
           Enter the world of King Paul Askew, where music takes on a whole new
           dimension.
         </p>
         <div className="flex flex-col gap-5 mt-20 sm:mt-14">
-          <h2>Podcasts</h2>
+          <h2 data-aos="fade">Podcasts</h2>
           <DoChecks
             isEmpty={allPodcasts?.length === 0}
             emptyText="Ooops! No Podcast available at the moment"
           >
             <div className="flex flex-col gap-5 py-2 sm:grid sm:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
               {allPodcasts?.map((el: SongType, i: number) => (
-                <MusicCard key={i} variant={2} info={el} />
+                <div key={i} data-aos="fade-up">
+                  <MusicCard variant={2} info={el} />
+                </div>
               ))}
             </div>
           </DoChecks>

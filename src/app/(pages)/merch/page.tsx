@@ -6,9 +6,13 @@ const Page = () => {
   return (
     <Section1Container>
       <div>
-        <h5 className="card1 ">WHERE MUSIC REIGNS SUPREME</h5>
-        <h1 className="mb-5 mt-2">The King Paul Collection</h1>
-        <p>
+        <h5 className="card1" data-aos="zoom-in">
+          WHERE MUSIC REIGNS SUPREME
+        </h5>
+        <h1 className="mb-5 mt-2" data-aos="fade-right">
+          The King Paul Collection
+        </h1>
+        <p data-aos="fade-left">
           Enter the world of King Paul Askew, where music takes on a whole new
           dimension.
         </p>
@@ -17,7 +21,9 @@ const Page = () => {
             {Array(12)
               .fill("")
               .map((el, i) => (
-                <MerchCard key={i} />
+                <div key={i} data-aos="fade-up">
+                  <MerchCard />
+                </div>
               ))}
           </div>
         </div>

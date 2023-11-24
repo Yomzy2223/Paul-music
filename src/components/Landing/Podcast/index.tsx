@@ -49,17 +49,25 @@ const Podcast = () => {
             className="object-contain lg:w-[500px] relative -left-5 lg:-left-20"
             width={437}
             height={327}
+            data-aos="fade"
           />
           <>
-            <h4 className="text-xs text-accent-foreground font-light mb-[10px] lg:text-base">
+            <h4
+              className="text-xs text-accent-foreground font-light mb-[10px] lg:text-base"
+              data-aos="zoom-in"
+            >
               Podcast
             </h4>
-            <h2 className="text-5xl font-bold mb-12 lg:text-6xl">
+            <h2
+              className="text-5xl font-bold mb-12 lg:text-6xl"
+              data-aos="fade-right"
+            >
               Unfiltered with King Paul
             </h2>
             <Link
               href="/podcast"
               className={buttonVariants({ variant: "default", size: "lg" })}
+              data-aos="flip-right"
             >
               Export Podcast <Image src={ArrowRight} alt="arrow right" />
             </Link>
@@ -67,7 +75,9 @@ const Podcast = () => {
         </div>
         <div className="flex flex-col flex-[1.1] sm:grid sm:grid-cols-2 gap-[20px] h-max max-w-max">
           {allPodcasts?.slice(0, 4).map((el: SongType, i: number) => (
-            <MusicCard key={i} variant={2} info={el} />
+            <div key={i} data-aos="fade-left">
+              <MusicCard variant={2} info={el} />
+            </div>
           ))}
         </div>
       </div>
