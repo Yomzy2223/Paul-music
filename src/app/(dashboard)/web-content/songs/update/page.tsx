@@ -1,5 +1,6 @@
 "use client";
 
+import { SongType } from "@/app/types/all";
 import MusicCard from "@/components/cards/MusicCard";
 import InputWithLabel from "@/components/formFields/inputWithLabel";
 import SelectWithLabel from "@/components/formFields/selectWithLabel";
@@ -9,8 +10,9 @@ import { toast } from "@/components/ui/use-toast";
 import GradientWrapper from "@/container/GradientWrapper";
 import { db } from "@/utils/firebase";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { PlusIcon } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -19,6 +21,46 @@ const Page = () => {
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState<string>("Single");
   const [genre, setGenre] = useState("Hip-hop/Rap");
+  const [song, setSong] = useState<SongType>({
+    title: "",
+    category: "",
+    link: "",
+    genre: "",
+    artiste: "",
+    date: "",
+  });
+
+  const id = useSearchParams().get("id");
+
+  const pullSong = async () => {
+    if (!id) return;
+    try {
+      const songSnapShot = await getDoc(doc(db, "songs", id));
+      const song = {
+        ...songSnapShot.data(),
+        id: songSnapShot.id,
+      } as SongType;
+      if (!song) return;
+      setSong(song);
+      setCategory(song.category || "");
+      setGenre(song.genre || "");
+      setValue("title", song.title);
+      setValue("category", song.category || "");
+      setValue("link", song.link);
+      setValue("genre", song.genre || "");
+      setValue("artiste", song.artiste || "");
+      setValue("date", song.date);
+    } catch (e) {
+      toast({
+        description: "Error pulling song",
+      });
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    pullSong();
+  }, [id]);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -33,24 +75,28 @@ const Page = () => {
     },
   });
 
-  const { getValues, setValue } = form;
+  const { setValue } = form;
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
     try {
-      const songsRef = doc(db, "songs", values.title);
-      await setDoc(songsRef, values, { merge: true });
-      console.log("Song added successfully");
+      if (!song.id) {
+        setLoading(false);
+        return;
+      }
+      const songsRef = doc(db, "songs", song.id);
+      await updateDoc(songsRef, values);
+      console.log("Song updated successfully");
       toast({
-        description: "Song added successfully",
+        description: "Song updated successfully",
       });
       form.reset();
     } catch (e: any) {
       toast({
-        description: "Error adding song" + e.message,
+        description: "Error updating song" + e.message,
       });
-      console.log("Error adding song" + e.message);
+      console.log("Error updating song" + e.message);
     }
     setLoading(false);
   }
@@ -82,7 +128,7 @@ const Page = () => {
                 className="rounded-lg active:scale-100"
                 disabled={loading}
               >
-                Publish now <PlusIcon />
+                Update <PlusIcon />
               </Button>
             </GradientWrapper>
             <GradientWrapper isButton className="rounded-lg">
@@ -100,8 +146,8 @@ const Page = () => {
 
         <div className="flex flex-col-reverse gap-7 md:flex-row">
           <div className="space-y-5">
-            <MusicCard variant={2} info={getValues()} />
-            <MusicCard info={getValues()} />
+            <MusicCard variant={2} info={song} />
+            <MusicCard info={song} />
           </div>
           <div className="flex-1 space-y-5">
             <InputWithLabel
@@ -142,8 +188,8 @@ const Page = () => {
             /> */}
             <InputWithLabel
               form={form}
-              name="artiste(s)"
-              label="Artiste Name"
+              name="artiste"
+              label="Artiste Name(s)"
               placeholder="Paul Kellerman"
               className="capitalize"
             />

@@ -22,14 +22,13 @@ const Page = () => {
       const songsSnapShot = await getDocs(collection(db, "songs"));
       const songs: any[] = [];
       songsSnapShot.forEach((doc) => {
-        songs.push(doc.data());
+        songs.push({ ...doc.data(), id: doc.id });
       });
       setAllSongs(
         songs.sort(
           (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
         )
       );
-      console.log(songs);
     } catch (e) {
       toast({
         description: "Error pulling songs",
@@ -67,7 +66,15 @@ const Page = () => {
         {allSongs?.length > 0 && (
           <div className="hidden grid-cols-2 sm:grid lg:grid-cols-3 xl:grid-cols-4 gap-y-7 gap-x-5 ">
             {allSongs?.map((el: SongType, i: number) => (
-              <MusicCard key={i} variant={2} info={el} />
+              <Button
+                variant="ghost2"
+                key={i}
+                onClick={() =>
+                  router.push(`/web-content/songs/update?id=${el.id}`)
+                }
+              >
+                <MusicCard variant={2} info={el} />
+              </Button>
             ))}
           </div>
         )}
@@ -75,11 +82,18 @@ const Page = () => {
         {allSongs?.length > 0 && (
           <div className="space-y-8 sm:hidden">
             {allSongs?.map((el: SongType, i: number) => (
-              <MusicCard
+              <Button
+                variant="ghost2"
                 key={i}
-                className="max-w-full from-card/30 to-card/30 via-card/30"
-                info={el}
-              />
+                onClick={() =>
+                  router.push(`/web-content/songs/update?id=${el.id}`)
+                }
+              >
+                <MusicCard
+                  className="max-w-full from-card/30 to-card/30 via-card/30"
+                  info={el}
+                />
+              </Button>
             ))}
           </div>
         )}

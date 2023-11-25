@@ -3,13 +3,13 @@
 import { SongType } from "@/app/types/all";
 import MusicCard from "@/components/cards/MusicCard";
 import DoChecks from "@/components/doChecks";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Page = () => {
@@ -17,12 +17,12 @@ const Page = () => {
 
   const router = useRouter();
 
-  const pullSongs = async () => {
+  const pullPodcasts = async () => {
     try {
       const podcastsSnapShot = await getDocs(collection(db, "podcasts"));
       const podcasts: any[] = [];
       podcastsSnapShot.forEach((doc) => {
-        podcasts.push(doc.data());
+        podcasts.push({ ...doc.data(), id: doc.id });
       });
       setAllPodcasts(
         podcasts.sort(
@@ -38,7 +38,7 @@ const Page = () => {
   };
 
   useEffect(() => {
-    pullSongs();
+    pullPodcasts();
   }, []);
 
   return (
@@ -66,7 +66,15 @@ const Page = () => {
         {allPodcasts?.length > 0 && (
           <div className="hidden grid-cols-2 sm:grid lg:grid-cols-3 xl:grid-cols-4 gap-y-7 gap-x-5 ">
             {allPodcasts?.map((el: SongType, i: number) => (
-              <MusicCard key={i} variant={2} info={el} />
+              <Button
+                variant="ghost2"
+                key={i}
+                onClick={() =>
+                  router.push(`/web-content/podcasts/update?id=${el.id}`)
+                }
+              >
+                <MusicCard variant={2} info={el} />
+              </Button>
             ))}
           </div>
         )}
@@ -74,11 +82,18 @@ const Page = () => {
         {allPodcasts?.length > 0 && (
           <div className="space-y-8 sm:hidden">
             {allPodcasts?.map((el: SongType, i: number) => (
-              <MusicCard
+              <Button
+                variant="ghost2"
                 key={i}
-                className="max-w-full from-card/30 to-card/30 via-card/30"
-                info={el}
-              />
+                onClick={() =>
+                  router.push(`/web-content/podcasts/update?id=${el.id}`)
+                }
+              >
+                <MusicCard
+                  className="max-w-full from-card/30 to-card/30 via-card/30"
+                  info={el}
+                />
+              </Button>
             ))}
           </div>
         )}

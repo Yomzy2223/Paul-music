@@ -4,7 +4,7 @@ import { TourType } from "@/app/types/all";
 import MusicCard from "@/components/cards/MusicCard";
 import TourCard from "@/components/cards/TourCard";
 import DoChecks from "@/components/doChecks";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import { db } from "@/utils/firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -23,7 +23,7 @@ const Page = () => {
       const toursSnapShot = await getDocs(collection(db, "tours"));
       const tours: any[] = [];
       toursSnapShot.forEach((doc) => {
-        tours.push(doc.data());
+        tours.push({ ...doc.data(), id: doc.id });
       });
       setAllTours(
         tours.sort(
@@ -67,7 +67,15 @@ const Page = () => {
         {allTours?.length > 0 && (
           <div className="hidden grid-cols-2 sm:grid xl:grid-cols-3 2xl:grid-cols-4 gap-y-7 gap-x-5 ">
             {allTours?.map((el: TourType, i: number) => (
-              <TourCard key={i} info={el} className="sm:px-3 sm:gap-3" />
+              <Button
+                variant="ghost2"
+                key={i}
+                onClick={() =>
+                  router.push(`/web-content/tours/update?id=${el.id}`)
+                }
+              >
+                <TourCard info={el} className="sm:px-3 sm:gap-3" />
+              </Button>
             ))}
           </div>
         )}
@@ -75,7 +83,15 @@ const Page = () => {
         {allTours?.length > 0 && (
           <div className="space-y-8 sm:hidden">
             {allTours?.map((el: TourType, i: number) => (
-              <TourCard key={i} info={el} className="sm:px-3 sm:gap-3" />
+              <Button
+                variant="ghost2"
+                key={i}
+                onClick={() =>
+                  router.push(`/web-content/tours/update?id=${el.id}`)
+                }
+              >
+                <TourCard key={i} info={el} className="sm:px-3 sm:gap-3" />
+              </Button>
             ))}
           </div>
         )}

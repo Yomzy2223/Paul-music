@@ -28,12 +28,12 @@ const MusicCard2 = ({
         height={250}
         className="min-w-full object-contain"
       />
-      <div className="flex items-center justify-between gap-6 w-full mt-4">
+      <div className="flex items-center justify-between gap-6 w-full mt-4 max-w-full text-left">
         <div>
-          <p className="text-xl font-semibold lg:text-2xl text-foreground">
+          <p className="text-lg font-semibold lg:text-xl text-foreground whitespace-pre-wrap">
             {info?.title || "--"}
           </p>
-          <p className="text-accent-foreground text-sm mt-2">
+          <p className="text-accent-foreground text-sm mt-2 whitespace-pre-wrap">
             {info?.artiste || info?.hostNames || "--"}
           </p>
         </div>
@@ -42,7 +42,13 @@ const MusicCard2 = ({
           className={buttonVariants({ variant: "ghost", size: "slim" })}
           target={info?.link ? "_blank" : ""}
         >
-          <Image src={PlayIcon} alt="play song" />
+          <Image
+            src={PlayIcon}
+            alt="play song"
+            width={40}
+            height={40}
+            className="min-w-[40px]"
+          />
         </Link>
       </div>
     </div>
