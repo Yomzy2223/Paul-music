@@ -19,13 +19,14 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost:
           "text-primary-foreground font-bold hover:bg-gradient-to-b hover:from-primary hover:to-secondary bg-clip-text hover:text-transparent",
+        ghost2: "bg-transparent",
         link: "text-primary underline-offset-4 hover:underline",
         plain: "bg-foreground hover:bg-foreground/90 text-background",
       },
       size: {
         default: "px-4 py-2",
         sm: "h-9 rounded-md px-3",
-        lg: "px-10 py-4 rounded-md h-max",
+        lg: "py-3 px-10 rounded-md h-max lg:py-4 ",
         full: "px-10 py-4 rounded-lg h-max min-w-full",
         icon: "h-10 w-10",
         slim: "h-max w-max",

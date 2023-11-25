@@ -1,4 +1,5 @@
 export interface SongType {
+  id?: string;
   artiste?: string;
   category?: string;
   date: string;
@@ -9,6 +10,7 @@ export interface SongType {
 }
 
 export interface TourType {
+  id?: string;
   name: string;
   link: string;
   description: string;

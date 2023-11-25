@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   FormControl,
@@ -24,6 +24,8 @@ import {
 import { auth } from "@/utils/firebase";
 
 const Page = () => {
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
   const user = getAuth().currentUser;
@@ -43,6 +45,7 @@ const Page = () => {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         // Signed in
@@ -50,8 +53,10 @@ const Page = () => {
         localStorage.setItem("user", JSON.stringify(user));
         console.log(user);
         router.push("/web-content");
+        setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   }
@@ -101,7 +106,12 @@ const Page = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" size="full" className="!mt-11">
+            <Button
+              type="submit"
+              size="full"
+              className="!mt-11"
+              disabled={loading}
+            >
               Login
             </Button>
           </form>

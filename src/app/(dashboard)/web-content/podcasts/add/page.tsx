@@ -9,7 +9,7 @@ import { toast } from "@/components/ui/use-toast";
 import GradientWrapper from "@/container/GradientWrapper";
 import { db } from "@/utils/firebase";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { PlusIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -35,7 +35,7 @@ const Page = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
     try {
-      const podcastsRef = doc(db, "podcasts", values.title);
+      const podcastsRef = doc(collection(db, "podcasts"));
       await setDoc(podcastsRef, values, { merge: true });
       console.log("Podcast added successfully");
       toast({

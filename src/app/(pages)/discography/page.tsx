@@ -44,18 +44,24 @@ const Page = () => {
   return (
     <Section1Container>
       <div>
-        <h5 className="card1 ">The Book Of Paul King Paul Version</h5>
-        <h1 className="mb-5 mt-2">Discography</h1>
-        <p>
+        <h5 className="card1" data-aos="zoom-in">
+          The Book Of Paul King Paul Version
+        </h5>
+        <h1 className="mb-5 mt-2" data-aos="fade-right">
+          Discography
+        </h1>
+        <p data-aos="fade-left">
           Enter the world of King Paul Askew, where music takes on a whole new
           dimension.
         </p>
         {newReleases?.length > 0 && (
           <div className="flex flex-col gap-5 mt-20 sm:mt-14">
-            <h2>Latest Releases</h2>
+            <h2 data-aos="fade">Latest Releases</h2>
             <div className="flex flex-col gap-5 py-2 sm:grid sm:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
               {newReleases?.map((el: SongType, i: number) => (
-                <MusicCard key={i} info={el} />
+                <div key={i} data-aos="fade-up">
+                  <MusicCard info={el} />
+                </div>
               ))}
             </div>
           </div>
@@ -64,10 +70,12 @@ const Page = () => {
 
       {otherReleases?.length > 0 && (
         <div className="flex flex-col gap-5 mt-20 sm:mt-14">
-          <h2>Other Releases</h2>
+          <h2 data-aos="fade">Other Releases</h2>
           <div className="flex flex-col gap-5 py-2 sm:grid sm:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
             {otherReleases?.map((el: SongType, i: number) => (
-              <MusicCard key={i} info={el} />
+              <div key={i} data-aos="fade-up">
+                <MusicCard info={el} />
+              </div>
             ))}
           </div>
         </div>
@@ -75,10 +83,12 @@ const Page = () => {
 
       {singleReleases?.length > 0 && (
         <div className="flex flex-col gap-5 mt-20 sm:mt-14">
-          <h2>Singles</h2>
+          <h2 data-aos="fade">Singles</h2>
           <div className="flex flex-col gap-5 py-2 sm:grid sm:gap-x-20 sm:grid-cols-2 lg:grid-cols-3">
             {singleReleases?.map((el: SongType, i: number) => (
-              <MusicCard key={i} variant={2} info={el} />
+              <div key={i} data-aos="fade-up">
+                <MusicCard variant={2} info={el} />
+              </div>
             ))}
           </div>
         </div>

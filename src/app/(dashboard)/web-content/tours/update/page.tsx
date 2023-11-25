@@ -1,5 +1,6 @@
 "use client";
 
+import { TourType } from "@/app/types/all";
 import MusicCard from "@/components/cards/MusicCard";
 import TourCard from "@/components/cards/TourCard";
 import InputWithLabel from "@/components/formFields/inputWithLabel";
@@ -10,14 +11,49 @@ import { toast } from "@/components/ui/use-toast";
 import GradientWrapper from "@/container/GradientWrapper";
 import { db } from "@/utils/firebase";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { PlusIcon } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const Page = () => {
   const [loading, setLoading] = useState(false);
+  const [tour, settour] = useState<TourType>({
+    description: "",
+    name: "",
+    date: "",
+    link: "",
+  });
+
+  const id = useSearchParams().get("id");
+
+  const pullTour = async () => {
+    if (!id) return;
+    try {
+      const tourSnapShot = await getDoc(doc(db, "tours", id));
+      const tour = {
+        ...tourSnapShot.data(),
+        id: tourSnapShot.id,
+      } as TourType;
+      if (!tour) return;
+      settour(tour);
+      setValue("name", tour.name);
+      setValue("description", tour.description || "");
+      setValue("date", tour.date);
+      setValue("link", tour.link);
+    } catch (e) {
+      toast({
+        description: "Error pulling tour",
+      });
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    pullTour();
+  }, [id]);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
@@ -30,24 +66,28 @@ const Page = () => {
     },
   });
 
-  const { getValues } = form;
+  const { setValue } = form;
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
     try {
-      const toursRef = doc(collection(db, "tours"));
-      await setDoc(toursRef, values, { merge: true });
-      console.log("Tour added successfully");
+      if (!tour.id) {
+        setLoading(false);
+        return;
+      }
+      const toursRef = doc(db, "tours", tour.id);
+      await updateDoc(toursRef, values);
+      console.log("Tour updated successfully");
       toast({
-        description: "Tour added successfully",
+        description: "Tour updated successfully",
       });
       form.reset();
     } catch (e: any) {
       toast({
-        description: "Error adding tour " + e.message,
+        description: "Error updating tour " + e.message,
       });
-      console.log("Error adding tour " + e.message);
+      console.log("Error updating tour " + e.message);
     }
     setLoading(false);
   }
@@ -60,21 +100,33 @@ const Page = () => {
       >
         <div className="flex justify-between items-center gap-6">
           <h3>Tours</h3>
-          <GradientWrapper isButton className="rounded-lg">
-            <Button
-              variant="outline"
-              className="rounded-lg active:scale-100"
-              disabled={loading}
-            >
-              Publish now <PlusIcon />
-            </Button>
-          </GradientWrapper>
+          <div className="flex items-center gap-6">
+            <GradientWrapper isButton className="rounded-lg">
+              <Button
+                variant="outline"
+                className="rounded-lg active:scale-100"
+                disabled={loading}
+              >
+                Update <PlusIcon />
+              </Button>
+            </GradientWrapper>
+            <GradientWrapper isButton className="rounded-lg">
+              <Button
+                variant="outline"
+                className="rounded-lg active:scale-100"
+                type="button"
+                disabled={loading}
+              >
+                Delete
+              </Button>
+            </GradientWrapper>
+          </div>
         </div>
 
         <div className="flex flex-col-reverse gap-7 md:flex-row">
           <div className="flex-1 space-y-5">
             <h4>Preview</h4>
-            <TourCard info={getValues()} className="sm:px-3 sm:gap-3 !mt-2" />
+            <TourCard info={tour} className="sm:px-3 sm:gap-3 !mt-2" />
           </div>
           <div className="flex-1 space-y-5">
             <InputWithLabel
@@ -121,18 +173,18 @@ export default Page;
 
 const formSchema = z.object({
   name: z
-    .string({ required_error: "Enter podcast title" })
-    .min(1, { message: "Enter podcast title" }),
+    .string({ required_error: "Enter tour title" })
+    .min(1, { message: "Enter tour title" }),
   link: z
-    .string({ required_error: "Enter podcast link" })
-    .min(1, { message: "Enter podcast link" }),
+    .string({ required_error: "Enter tour link" })
+    .min(1, { message: "Enter tour link" }),
   description: z
-    .string({ required_error: "Enter podcast genre" })
+    .string({ required_error: "Enter tour genre" })
     .min(1, { message: "Enter host name(s)" }),
   // cover: z
-  //   .string({ required_error: "Enter podcast release date" })
-  //   .min(1, { message: "Enter podcast release date" }),
+  //   .string({ required_error: "Enter tour release date" })
+  //   .min(1, { message: "Enter tour release date" }),
   date: z
-    .string({ required_error: "Enter podcast release date" })
-    .min(1, { message: "Enter podcast release date" }),
+    .string({ required_error: "Enter tour release date" })
+    .min(1, { message: "Enter tour release date" }),
 });

@@ -8,11 +8,15 @@ const Store = () => {
   return (
     <div className="hidden lg:flex flex-col items-center justify-center pt-24 pb-32">
       <div className="flex gap-10 mb-10">
-        <Image src={StoreImg1} alt="store" />
-        <Image src={StoreImg2} alt="store" />
-        <Image src={StoreImg1} alt="store" />
+        <Image src={StoreImg1} alt="store" data-aos="fade-up" />
+        <Image src={StoreImg2} alt="store" data-aos="fade-left" />
+        <Image src={StoreImg1} alt="store" data-aos="fade-down" />
       </div>
-      <Link href="/merch" className={buttonVariants({ size: "lg" })}>
+      <Link
+        href="/merch"
+        className={buttonVariants({ size: "lg" })}
+        data-aos="flip-left"
+      >
         Visit Store
       </Link>
     </div>

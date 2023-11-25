@@ -11,7 +11,7 @@ const ArtistImg1 = ({
   showSides?: boolean;
 }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2" data-aos="fade">
       {showSides && (
         <div className="bg-gradient-to-r from-gr-color-1 to-gr-color-2 w-4 h-16 rounded-r-xl rounded-l-lg" />
       )}
@@ -22,6 +22,7 @@ const ArtistImg1 = ({
             alt="king Paul"
             className="object-contain"
             width={250}
+            height={200}
           />
           <Image
             src={LinePattern}

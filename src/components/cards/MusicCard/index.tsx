@@ -1,11 +1,11 @@
 import { SongType } from "@/app/types/all";
 import { SongCover } from "@/assets/images";
 import { PlayIcon } from "@/assets/svg";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import MusicCard2 from "./MusicCard2";
 
 const MusicCard = ({
@@ -33,10 +33,12 @@ const MusicCard = ({
         height={60}
         className="rounded-xl object-contain"
       />
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between gap-3">
         <div className="flex flex-col justify-between gap-1">
-          <h4>{info?.title || "--"}</h4>
-          <p className="text-xs">{info?.artiste || info?.hostNames || "--"}</p>
+          <h4 className="whitespace-pre-wrap">{info?.title || "--"}</h4>
+          <p className="text-xs whitespace-pre-wrap">
+            {info?.artiste || info?.hostNames || "--"}
+          </p>
         </div>
         <Link
           href={info?.link || ""}

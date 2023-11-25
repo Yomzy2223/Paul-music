@@ -12,8 +12,13 @@ const Discography = () => {
       <ArtistImg1 showSides />
 
       <div className="flex flex-col flex-1">
-        <h2 className="font-semibold text-6xl">Discography</h2>
-        <p className="text-base text-accent-foreground mt-3 mb-12">
+        <h2 className="font-semibold text-6xl" data-aos="fade-right">
+          Discography
+        </h2>
+        <p
+          className="text-base text-accent-foreground mt-3 mb-12"
+          data-aos="fade-left"
+        >
           Enter the world of King Paul Askew, where music takes on a whole new
           dimension. With a unique blend of talent and passion, King Paul
           transcends genres and leaves an indelible mark on every note he plays.
@@ -21,6 +26,7 @@ const Discography = () => {
         <Link
           href="/discography"
           className={buttonVariants({ variant: "default", size: "lg" })}
+          data-aos="flip-left"
         >
           Explore Now
         </Link>
