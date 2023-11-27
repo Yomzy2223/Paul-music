@@ -58,34 +58,55 @@ const Hero = () => {
               className="flex gap-2 bg-card/20 px-[20px] py-[10px] w-max rounded-lg"
               data-aos="fade"
             >
-              <Image
-                src={SoundCloud}
-                alt="sound cloud"
-                className="object-contain"
-                width={70}
-                height={70}
-              />
-              <Image
-                src={Sportify}
-                alt="sportify"
-                className="object-contain"
-                width={70}
-                height={70}
-              />
-              <Image
-                src={Album}
-                alt="album"
-                className="object-contain"
-                width={70}
-                height={70}
-              />
-              <Image
-                src={Stereo}
-                alt="music wave"
-                className="object-contain"
-                width={70}
-                height={70}
-              />
+              <Link
+                href="https://music.apple.com/us/artist/paul-askew/1538495927"
+                target="_blank"
+              >
+                <Image
+                  src={SoundCloud}
+                  alt="sound cloud"
+                  className="object-contain"
+                  width={70}
+                  height={70}
+                />
+              </Link>
+
+              <Link
+                href="https://open.spotify.com/artist/0prvPO5rrR6tm1y1lFfaQA?si=KNrdS4MiS4WRva9c5rTmTA"
+                target="_blank"
+              >
+                <Image
+                  src={Sportify}
+                  alt="sportify"
+                  className="object-contain"
+                  width={70}
+                  height={70}
+                />
+              </Link>
+              <Link
+                href="https://youtube.com/@KingPaulAskew?si=k4E1z8QytEp2Ni33"
+                target="_blank"
+              >
+                <Image
+                  src={Album}
+                  alt="album"
+                  className="object-contain"
+                  width={70}
+                  height={70}
+                />
+              </Link>
+              <Link
+                href="https://instagram.com/kingpaulaskew?utm_source=qr"
+                target="_blank"
+              >
+                <Image
+                  src={Stereo}
+                  alt="music wave"
+                  className="object-contain"
+                  width={70}
+                  height={70}
+                />
+              </Link>
             </div>
           </div>
         </div>
@@ -112,8 +133,22 @@ const Hero = () => {
             data-aos="fade"
           >
             <div className="flex justify-between gap-2">
-              <Image src={SoundCloud} alt="sound cloud" className="max-h-max" />
-              <Image src={Sportify} alt="sportify" />
+              <Link
+                href="https://music.apple.com/us/artist/paul-askew/1538495927"
+                target="_blank"
+              >
+                <Image
+                  src={SoundCloud}
+                  alt="sound cloud"
+                  className="max-h-max"
+                />
+              </Link>
+              <Link
+                href="https://open.spotify.com/artist/0prvPO5rrR6tm1y1lFfaQA?si=KNrdS4MiS4WRva9c5rTmTA"
+                target="_blank"
+              >
+                <Image src={Sportify} alt="sportify" />
+              </Link>
             </div>
             <GradientWrapper className="bg-gradient-to-r from-gr-color-1 via-gr-color-3 to-gr-color-2 rounded-[140px] p-2 mx-8">
               <div className="bg-gradient-to-b from-primary to-secondary rounded-[140px] pt-12 border-4 border-background w-36 ">
@@ -121,8 +156,18 @@ const Hero = () => {
               </div>
             </GradientWrapper>
             <div className="flex justify-between gap-2">
-              <Image src={Album} alt="album" />
-              <Image src={Stereo} alt="music wave" />
+              <Link
+                href="https://youtube.com/@KingPaulAskew?si=k4E1z8QytEp2Ni33"
+                target="_blank"
+              >
+                <Image src={Album} alt="album" />
+              </Link>
+              <Link
+                href="https://instagram.com/kingpaulaskew?utm_source=qr"
+                target="_blank"
+              >
+                <Image src={Stereo} alt="music wave" />
+              </Link>
             </div>
           </div>
         </div>
