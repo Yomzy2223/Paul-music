@@ -48,7 +48,7 @@ const Collection = () => {
             </Link>
           </div>
 
-          <div className="flex-1 flex flex-col gap-4 min-[450px]:grid min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 w-max">
+          {/* <div className="flex-1 flex flex-col gap-4 min-[450px]:grid min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 w-max">
             <Image
               src={PaulImg1}
               alt="paul"
@@ -97,7 +97,7 @@ const Collection = () => {
               width={200}
               height={300}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

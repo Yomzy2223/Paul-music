@@ -1,11 +1,13 @@
+import { ConstructionImg } from "@/assets/images";
 import MerchCard from "@/components/cards/MerchCard";
+import Image from "next/image";
 import React from "react";
 import Section1Container from "../../../container/Section1Container";
 
 const Page = () => {
   return (
     <Section1Container>
-      <div>
+      {/* <div>
         <h5 className="card1" data-aos="zoom-in">
           WHERE MUSIC REIGNS SUPREME
         </h5>
@@ -27,7 +29,8 @@ const Page = () => {
               ))}
           </div>
         </div>
-      </div>
+      </div> */}
+      <Image src={ConstructionImg} alt="under construction" />
     </Section1Container>
   );
 };
