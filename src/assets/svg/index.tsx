@@ -16,6 +16,10 @@ import ForwardIcon from "./forward_icon.svg";
 import PlusIcon from "./plus_icon.svg";
 import RightArrowIcon from "./right_arrow.svg";
 import EmptyIcon from "./empty_icon.svg";
+import AppleMusicIcon from "./apple_music_icon.svg";
+import InstagramIcon from "./instagram_icon.svg";
+import YouTubeIcon from "./youtube_icon.svg";
+import SpotifyIcon from "./spotify_icon.svg";
 
 export {
   Logo,
@@ -36,4 +40,8 @@ export {
   PlusIcon,
   RightArrowIcon,
   EmptyIcon,
+  AppleMusicIcon,
+  InstagramIcon,
+  YouTubeIcon,
+  SpotifyIcon,
 };

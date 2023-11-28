@@ -11,6 +11,10 @@ import {
   Album,
   SoundCloud,
   LinePattern,
+  AppleMusicIcon,
+  YouTubeIcon,
+  InstagramIcon,
+  SpotifyIcon,
 } from "@/assets/svg";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
@@ -61,50 +65,54 @@ const Hero = () => {
               <Link
                 href="https://music.apple.com/us/artist/paul-askew/1538495927"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
                 <Image
-                  src={SoundCloud}
+                  src={AppleMusicIcon}
                   alt="sound cloud"
                   className="object-contain"
-                  width={70}
-                  height={70}
+                  width={45}
+                  height={45}
                 />
               </Link>
 
               <Link
                 href="https://open.spotify.com/artist/0prvPO5rrR6tm1y1lFfaQA?si=KNrdS4MiS4WRva9c5rTmTA"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
                 <Image
-                  src={Sportify}
-                  alt="sportify"
+                  src={SpotifyIcon}
+                  alt="spotify"
                   className="object-contain"
-                  width={70}
-                  height={70}
+                  width={45}
+                  height={45}
                 />
               </Link>
               <Link
                 href="https://youtube.com/@KingPaulAskew?si=k4E1z8QytEp2Ni33"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
                 <Image
-                  src={Album}
+                  src={YouTubeIcon}
                   alt="album"
                   className="object-contain"
-                  width={70}
-                  height={70}
+                  width={45}
+                  height={45}
                 />
               </Link>
               <Link
                 href="https://instagram.com/kingpaulaskew?utm_source=qr"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
                 <Image
-                  src={Stereo}
+                  src={InstagramIcon}
                   alt="music wave"
                   className="object-contain"
-                  width={70}
-                  height={70}
+                  width={45}
+                  height={45}
                 />
               </Link>
             </div>
@@ -136,18 +144,28 @@ const Hero = () => {
               <Link
                 href="https://music.apple.com/us/artist/paul-askew/1538495927"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
                 <Image
-                  src={SoundCloud}
+                  src={AppleMusicIcon}
                   alt="sound cloud"
-                  className="max-h-max"
+                  className="object-contain"
+                  width={45}
+                  height={45}
                 />
               </Link>
               <Link
                 href="https://open.spotify.com/artist/0prvPO5rrR6tm1y1lFfaQA?si=KNrdS4MiS4WRva9c5rTmTA"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
-                <Image src={Sportify} alt="sportify" />
+                <Image
+                  src={SpotifyIcon}
+                  alt="spotify"
+                  className="object-contain"
+                  width={45}
+                  height={45}
+                />
               </Link>
             </div>
             <GradientWrapper className="bg-gradient-to-r from-gr-color-1 via-gr-color-3 to-gr-color-2 rounded-[140px] p-2 mx-8">
@@ -159,14 +177,28 @@ const Hero = () => {
               <Link
                 href="https://youtube.com/@KingPaulAskew?si=k4E1z8QytEp2Ni33"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
-                <Image src={Album} alt="album" />
+                <Image
+                  src={YouTubeIcon}
+                  alt="album"
+                  className="object-contain"
+                  width={45}
+                  height={45}
+                />
               </Link>
               <Link
                 href="https://instagram.com/kingpaulaskew?utm_source=qr"
                 target="_blank"
+                className="bg-card/25 p-[2px] rounded-full h-max"
               >
-                <Image src={Stereo} alt="music wave" />
+                <Image
+                  src={InstagramIcon}
+                  alt="music wave"
+                  className="object-contain"
+                  width={45}
+                  height={45}
+                />
               </Link>
             </div>
           </div>
