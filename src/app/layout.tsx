@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(poppins.className, "")}>
+      <body className={cn(poppins.className, "max-h-screen")}>
         {children}
         <Toaster />
       </body>

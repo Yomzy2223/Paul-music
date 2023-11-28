@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Header />
       {children}
       <Footer />
