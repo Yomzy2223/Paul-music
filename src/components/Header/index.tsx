@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <>
       <header
-        className="flex justify-between items-center gap-6 px-4 py-5 sm:px-10 sm:py-6 lg:px-24 lg:py-8 z-10"
+        className="bg-background flex justify-between items-center gap-6 px-4 py-5 sticky top-0 sm:px-10 sm:py-6 lg:px-24 lg:py-8 z-10"
         data-aos="fade"
       >
         <Image
