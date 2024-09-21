@@ -21,7 +21,7 @@ const Collection = () => {
         height={400}
       />
       <div className="bg-card/5 ">
-        <div className="flex flex-col gap-12 max-w-[640px] lg:flex-row m-auto p-5 lg:px-20 lg:py-16 lg:max-w-max">
+        <div className="flex flex-col gap-12 max-w-[640px] lg:flex-row p-5 lg:px-20 lg:py-16 lg:max-w-max">
           <div className="flex flex-col flex-1">
             <p
               className="text-xs font-normal py-[10px] px-[20px] bg-card/10 rounded-[30px] w-max mb-2 sm:text-sm"

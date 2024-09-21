@@ -41,7 +41,7 @@ const Podcast = () => {
 
   return (
     <div className="flex justify-center bg-card/5 ">
-      <div className="flex flex-col items-center max-w-max gap-12 p-5 lg:flex-row lg:items-end lg:px-20 lg:py-16">
+      <div className="flex flex-col items-center max-w-max gap-12 p-5 xl:flex-row xl:items-end xl:px-20 xl:py-16">
         <div className="flex flex-col gap-[10px] flex-[0.9]">
           <Image
             src={PodcastMic}
@@ -73,7 +73,7 @@ const Podcast = () => {
             </Link>
           </>
         </div>
-        <div className="flex flex-col flex-[1.1] sm:grid sm:grid-cols-2 gap-[20px] h-max max-w-max">
+        <div className="flex flex-col flex-[1.1] lg:grid lg:grid-cols-2 gap-[20px] h-max w-full">
           {allPodcasts?.slice(0, 4).map((el: SongType, i: number) => (
             <div key={i} data-aos="fade-left">
               <MusicCard variant={2} info={el} />
