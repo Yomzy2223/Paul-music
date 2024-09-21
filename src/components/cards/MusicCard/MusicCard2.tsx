@@ -56,27 +56,3 @@ const MusicCard2 = ({
 };
 
 export default MusicCard2;
-
-//  <div className="flex items-center justify-between gap-6 w-full mt-4 max-w-full text-left">
-//    <div>
-//      <p className="text-lg font-semibold lg:text-xl text-foreground max-w-[250px]">
-//        {info?.title || "--"}
-//      </p>
-//      <p className="text-accent-foreground text-sm mt-2 max-w-[200px]">
-//        {info?.artiste || info?.hostNames || "--"}
-//      </p>
-//    </div>
-//    <Link
-//      href={info?.link || ""}
-//      className={buttonVariants({ variant: "ghost", size: "slim" })}
-//      target={info?.link ? "_blank" : ""}
-//    >
-//      <Image
-//        src={PlayIcon}
-//        alt="play song"
-//        width={40}
-//        height={40}
-//        className="min-w-[40px]"
-//      />
-//    </Link>
-//  </div>;
