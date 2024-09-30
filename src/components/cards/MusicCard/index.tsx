@@ -1,5 +1,5 @@
 import { SongType } from "@/app/types/all";
-import { SongCover } from "@/assets/images";
+import { PodcastCover } from "@/assets/images";
 import { PlayIcon } from "@/assets/svg";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -27,7 +27,7 @@ const MusicCard = ({
       )}
     >
       <Image
-        src={SongCover}
+        src={PodcastCover}
         alt="music cover"
         width={60}
         height={60}

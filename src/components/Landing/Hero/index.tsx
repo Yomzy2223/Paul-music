@@ -23,7 +23,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="bg-hero bg-no-repeat bg-cover ">
+    <div className="bg-hero bg-no-repeat bg-cover relative">
       <Image
         src={MusicDisk2}
         alt="music disk"
